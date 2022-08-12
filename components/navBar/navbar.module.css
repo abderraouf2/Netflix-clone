@@ -137,22 +137,23 @@
 @media screen and (max-width: 768px) {
   .logoLink{
     margin: 0;
+    width: 30%;
   }
   .logoWrapper {
     color: var(--red);
-    width: 7rem ;
+    width: 100% ;
   }
   .navContainer{
     font-size: 2rem;
-    width: 10rem;
+    width: 40%;
   }
   .navItems{
     font-size: 1rem;
-    width: 15%;
+    width: 30%;
     margin-left: 0;
   }
   .navItem{
-    font-size: .7rem;
+    font-size: 1rem;
   }
   .username {
     font-size: .7rem;
