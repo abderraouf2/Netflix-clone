@@ -8,7 +8,6 @@ export async function middleware( request ) {
   if( token && request.nextUrl.pathname === "/login" ) {
     const url = request.nextUrl.clone()
     url.pathname = '/';
-    
     return NextResponse.rewrite(url)
   }
   if ( !token ) {
