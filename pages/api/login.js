@@ -1,5 +1,5 @@
 
-import { mAdmin } from "../../lib/magic-admin";
+import { magicAdmin } from "../../lib/magic-admin";
 import jwt from "jsonwebtoken";
 import { isNewUser,createNewUser } from "../../lib/db/hasura";
 import { setTokenCookie } from "../../lib/cookies";
@@ -12,7 +12,7 @@ export default async function login(req,res) {
 
     // invoke magic
 
-    const metadata = await mAdmin.users.getMetadataByToken(didToken)
+    const metadata = await magicAdmin.users.getMetadataByToken(didToken)
     
     // create JWT
 
