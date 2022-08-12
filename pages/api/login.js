@@ -13,7 +13,7 @@ export default async function login(req,res) {
     // invoke magic
 
     const metadata = await mAdmin.users.getMetadataByToken(didToken)
-    console.log({metadata});
+    
     // create JWT
 
     const token = jwt.sign({
@@ -32,14 +32,14 @@ export default async function login(req,res) {
     //check if user exists
 
     const newUser = await isNewUser(token,metadata.issuer)
-    console.log({newUser : newUser});
+    
     if (newUser) {
       await createNewUser(token,metadata);
       
       //set cookie
 
       const cookie = setTokenCookie(token,res);
-      console.log({cookie});
+      
 
       res.send({ done : true ,msg : 'this is a new user'})
     } else {
@@ -47,7 +47,6 @@ export default async function login(req,res) {
       //set cookie
 
       const cookie = setTokenCookie(token,res);
-      console.log({cookie});
       res.send({ done : true ,msg : 'not a new user'})
     }
    

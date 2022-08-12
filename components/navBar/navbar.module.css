@@ -114,7 +114,7 @@
 
 @media (min-width: 768px) {
   .wrapper {
-    padding-left: 4rem /* 64px */;
+    padding-left: 1rem /* 64px */;
     padding-right: 4rem /* 64px */;
     flex-direction: row;
     align-items: center;

@@ -42,12 +42,12 @@ const NavBar = () => {
     try {
       const { email } = await magic.user.getMetadata();
       const didToken = await magic.user.getIdToken();
-      console.log({ didToken });
+      
       if(email){
         setUsername(email);
       }
     } catch {
-      console.log("error getting email");
+      
       // Handle errors if required!
     }
   }
@@ -57,12 +57,13 @@ const NavBar = () => {
   return(
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <a className={styles.logoLink} href="/">
-          <div className={styles.logoWrapper}>
-          <Image src="/static/netflix.svg" alt='netflix logo' width="200px" height='50px' />
-          </div>
-        </a>
-      
+        <Link href="/">
+          <a className={styles.logoLink}>
+            <div className={styles.logoWrapper}>
+            <Image src="/static/netflix.svg" alt='netflix logo' width="200px" height='50px' />
+            </div>
+          </a>
+        </Link>
         <ul className={styles.navItems}>
           <li  className={styles.navItem} onClick={handleOnClickHome}>Home</li>
           <li  className={styles.navItem} onClick={handleOnClickMyList}>My list</li>

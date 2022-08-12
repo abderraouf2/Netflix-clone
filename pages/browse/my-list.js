@@ -2,21 +2,12 @@ import Head from "next/head"
 import NavBar from "../../components/navBar/navbar";
 import SectionCards from '../../components/card/sectionCards';
 import styles from '../../styles/myList.module.css'
-import useRedirect from "../../utils/redirect";
+import RedirectInfo from "../../utils/redirect";
 import { getLikedVideosList } from "../../lib/videos";
 
 export async function getServerSideProps (context) {
 
-  const { userId, token } = await useRedirect(context);
-  if (!userId) {
-    return {
-      props: {},
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    }
-  }
+  const { userId, token } = await RedirectInfo(context);
 
   const likedList = await getLikedVideosList(userId, token)
   return {props : { likedList }}

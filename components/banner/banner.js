@@ -8,7 +8,6 @@ export default function Banner(props) {
   const {title, subtitle, imgUrl,videoId} = props;
   const router = useRouter();
   const HandlePlay =()=>{
-    console.log('play');
     router.push(`video/${videoId}`)
   }
   return (

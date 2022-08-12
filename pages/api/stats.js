@@ -19,13 +19,13 @@ export default async function stats(req,res){
       
       if (req.method==="POST") { 
           const {favourited, watched=true } = req.body
-          console.log({ doesStatsExist });
+          
           if(doesStatsExist){
-            console.log("updating...");
+          
             const response = await updateStats(token, {userId, videoId,favourited ,watched })
             res.send({ msg : "updated", data: response.data })
           } else {
-            console.log("inserting..."); 
+          
             const response = await insertStats(token, { userId, videoId, favourited, watched })
             res.send({ msg : "inserted",data: response.data })
           }

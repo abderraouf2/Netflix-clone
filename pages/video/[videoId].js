@@ -7,25 +7,14 @@ import clsx from 'classnames'
 import Like from "../../components/icons/like";
 import Dislike from "../../components/icons/dislike";
 import { useEffect, useState } from "react";
-import useRedirect from '../../utils/redirect'
 Modal.setAppElement("#__next");
 
 
 
 export async function getStaticProps(context) {
-  // const { userId, token } = await useRedirect(context);
-  // if (!token) {
-  //   return {
-  //     props: {},
-  //     redirect: {
-  //       destination: '/login',
-  //       permanent: false,
-  //     },
-  //   }
-  // }
 
   const videoId = context.params.videoId;
-  console.log(context);
+  
   const videoArray = await getYoutubeVideoById(videoId)
   return {
     props: {
@@ -53,7 +42,7 @@ const Video = (video) => {
       method:"GET"
     })
     const data = await response.json();
-    console.log({ data });
+    
     if (data.length > 0) {
       const favourited = data[0].favourited;
       if (favourited === 1) {
@@ -90,20 +79,20 @@ const Video = (video) => {
   const toggleLike = async () => {
     setLike(!like)
     setDislike(false)
-    console.log("liked");
+    
     const val = !like;
     const favourited = val ? 1 : null
     const response = await RatingServer(favourited)
-    console.log("data", await response.json());
+    
   }
   const toggleDislike = async() => {
     setLike(false)
     setDislike(!dislike)
-    console.log("disliked");
+    
     const val = !dislike;
     const favourited = val ? 0 : null
     const response = await RatingServer(favourited)
-    console.log("data", await response.json());
+    
   }
   
   return (
@@ -120,7 +109,7 @@ const Video = (video) => {
                 className={styles.videoPlayer}
                 id="ytplayer" type="text/html" width="100%" height="360"
                 src={`https://www.youtube.com/embed/${videoId}?autoplay=0&origin=http://example.com&controls=1`}
-                frameborder="0">
+                frameBorder="0">
        </iframe>
        <div className={styles.likeDislikeBtnWrapper}>
           <div className={styles.likeBtnWrapper}>  

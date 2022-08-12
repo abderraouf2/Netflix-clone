@@ -6,19 +6,10 @@ import SectionCards from '../components/card/sectionCards';
 
 import { getVideos,getPopularVideos,getWatchedVideosList } from '../lib/videos';
 
-import useRedirect from '../utils/redirect';
+import RedirectInfo from '../utils/redirect';
 
 export async function getServerSideProps (context) {
-  const {userId, token} = await useRedirect(context);
-  // if (!userId) {
-  //   return {
-  //     props: {},
-  //     redirect: {
-  //       destination: '/login',
-  //       permanent: false,
-  //     },
-  //   }
-  // }
+  const {userId, token} = await RedirectInfo(context);
   const DisneyVideos = await getVideos('disney trailer');
   const AnimeVideos = await getVideos('one piece');
   const TravelVideos = await getVideos('travel');

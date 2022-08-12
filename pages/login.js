@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from '../styles/login.module.css'; 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import magic from '../lib/magic'
@@ -29,7 +30,7 @@ const Login = () => {
         try {
             setLoading(true);
             const DID = await magic.auth.loginWithMagicLink({ email, });
-            console.log(DID);
+            
             if (DID) {
               const response = await fetch('/api/login',{
                 method: "POST",
@@ -40,7 +41,7 @@ const Login = () => {
               });
               const loggedInResponse = await response.json();
               if (loggedInResponse.done) {
-                console.log(loggedInResponse);
+                
                 router.push('/')
               }else {
                 setLoading(false);
@@ -48,7 +49,7 @@ const Login = () => {
               }
             }
           } catch (error){
-            console.log("erroooooor",error);
+            
           }
     } else {
       setMessage('enter a valide email Address')
@@ -67,7 +68,8 @@ const Login = () => {
       </Head>
       <header className={styles.header}>
           <div className={styles.headerWrapper}>
-              <a className={styles.logoLink} href="/">
+            <Link href="/">
+              <a className={styles.logoLink}>
                 <div className={styles.logoWrapper}>
                 <Image src="/static/netflix.svg" 
                       alt='netflix logo' 
@@ -75,6 +77,7 @@ const Login = () => {
                       height='50px' />
                 </div>
               </a>
+            </Link>
           </div>
       </header>
           <main className={styles.main}>
