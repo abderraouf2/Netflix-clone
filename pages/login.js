@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import magic from '../lib/magic'
+
+
 const Login = () => {
   const router = useRouter();
   const [message, setMessage] = useState('');
@@ -41,8 +43,9 @@ const Login = () => {
               });
               const loggedInResponse = await response.json();
               if (loggedInResponse.done) {
-                
-                router.push('/')
+                router.push({
+                  pathname: `/`,
+                });
               }else {
                 setLoading(false);
                 setMessage("Something went wrong loggin in")

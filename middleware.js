@@ -6,7 +6,7 @@ import { verifyToken } from './lib/utils'
 export async function middleware( request, ev ) {
   const token = await request ? request.cookies.get("token") : null;
   const userId = await verifyToken(token);
-    console.log(userId);
+    
   if( userId && request.nextUrl.pathname === "/login" ) {
     const url = request.nextUrl.clone()
     url.pathname = '/';

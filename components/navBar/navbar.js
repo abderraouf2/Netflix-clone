@@ -35,7 +35,9 @@ const NavBar = () => {
       const res = await response.json();
     } catch (error) {
       console.error("Error logging out", error);
-      router.push("/login");
+      router.push({
+        pathname: "/login"
+      });
     }
   };
   const getEmail = async () =>{
