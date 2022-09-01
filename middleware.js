@@ -10,12 +10,12 @@ export async function middleware( request, ev ) {
   if( userId && request.nextUrl.pathname === "/login" ) {
     const url = request.nextUrl.clone()
     url.pathname = '/';
-    return NextResponse.redirect(url)
+    return NextResponse.rewrite(url)
   }
   if ( (!token || !userId) && request.nextUrl.pathname !== "/login" ) {
     const url = request.nextUrl.clone()
     url.pathname = '/login';
-    return NextResponse.redirect(url)
+    return NextResponse.rewrite(url)
   }
   if ( userId ) {
     return NextResponse.next();
